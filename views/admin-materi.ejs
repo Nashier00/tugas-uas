@@ -1,0 +1,25 @@
+<h2>Daftar Materi Menunggu Persetujuan</h2>
+
+<% materi.forEach(m => { %>
+<div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px">
+  <h3><%= m.title %></h3>
+  <p><%= m.description %></p>
+  <p>Status: <%= m.status %></p>
+
+  <form
+    action="/admin/approve/<%= m.id %>"
+    method="POST"
+    style="display: inline"
+  >
+    <button>Approve</button>
+  </form>
+
+  <form
+    action="/admin/reject/<%= m.id %>"
+    method="POST"
+    style="display: inline"
+  >
+    <button>Reject</button>
+  </form>
+</div>
+<% }) %>

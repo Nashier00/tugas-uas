@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <%- include("partials/dashboard/head.ejs") %>
+  <body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+      <!-- Main Content -->
+      <div class="flex flex-col flex-1 overflow-hidden">
+        <!-- Top Navigation -->
+        <%- include("partials/dashboard/nav.ejs") %>
+        <!-- Main Content Area -->
+        <div class="flex-1 overflow-auto p-6">
+          <!-- Welcome Banner -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+            <div class="p-6">
+              <h1 class="text-2xl font-bold text-gray-900 mb-1">
+                Good morning, <%= user.name %>
+              </h1>
+              <p class="text-gray-600 mb-6">
+                Continue your learning journey where you left off
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Continue Learning Card -->
+                <div
+                  class="col-span-2 flex items-center bg-gray-50 rounded-lg overflow-hidden border border-gray-200"
+                >
+                  <div class="w-1/3">
+                    <img
+                      src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ed704cc6-65dc-4ad9-8e67-c896cf10f12c.png"
+                      alt="Modern web development course cover with HTML CSS and JavaScript logos"
+                      class="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div class="w-2/3 p-4">
+                    <h3 class="text-sm font-semibold text-gray-500">
+                      CONTINUE LEARNING
+                    </h3>
+                    <h2 class="text-lg font-bold text-gray-900 mt-1 mb-2">
+                      The Complete 2023 Web Development Bootcamp
+                    </h2>
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                      <span>Section 5</span>
+                      <span class="mx-2">•</span>
+                      <span>Lecture 31</span>
+                    </div>
+
+                    <div class="w-full mb-3">
+                      <div
+                        class="flex justify-between text-xs text-gray-500 mb-1"
+                      >
+                        <span>Progress</span>
+                        <span>65%</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div class="progress-value" style="width: 65%"></div>
+                      </div>
+                    </div>
+
+                    <button
+                      class="px-4 py-2 bg-purple-600 text-white rounded-md text-sm font-medium hover:bg-purple-700"
+                    >
+                      Continue Course
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Learning Stats -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                  <h3 class="text-sm font-semibold text-gray-500 mb-4">
+                    LEARNING STATS
+                  </h3>
+
+                  <div class="flex items-center justify-between mb-4">
+                    <div>
+                      <div class="text-gray-500 text-sm">Days in a row</div>
+                      <div class="text-2xl font-bold">12</div>
+                    </div>
+                    <div
+                      class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-6 h-6 text-purple-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-gray-500 text-sm">Minutes today</div>
+                      <div class="text-2xl font-bold">47</div>
+                    </div>
+                    <div
+                      class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-6 h-6 text-orange-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Materi -->
+          <% if (user) { %>
+          <div class="mb-4">
+            <a href="/upload-materi">
+              <button
+                class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded"
+              >
+                + Upload Materi
+              </button>
+            </a>
+          </div>
+          <% } %>
+
+          <!-- My Courses Section -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-6">
+                <h1 class="text-xl font-bold text-gray-900">My Courses</h1>
+                <div class="flex space-x-2">
+                  <button
+                    class="px-3 py-1 text-sm font-medium border border-gray-200 rounded-md hover:bg-gray-50"
+                  >
+                    All
+                  </button>
+                  <button
+                    class="px-3 py-1 text-sm font-medium border border-gray-200 rounded-md hover:bg-gray-50"
+                  >
+                    In Progress
+                  </button>
+                  <button
+                    class="px-3 py-1 text-sm font-medium border border-gray-200 rounded-md hover:bg-gray-50"
+                  >
+                    Completed
+                  </button>
+                  <button
+                    class="px-3 py-1 text-sm font-medium border border-gray-200 rounded-md hover:bg-gray-50"
+                  >
+                    Wishlist
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+              >
+                <!-- Course Card 1 -->
+                <% courses.forEach(course => { %>
+                <div
+                  class="bg-white border border-gray-200 rounded-lg overflow-hidden course-card transition duration-300"
+                >
+                  <img
+                    src="<%= course.thumbnail %>"
+                    alt="Thumbnail"
+                    class="w-full h-36 object-cover"
+                  />
+                  <div class="p-4">
+                    <h3 class="font-bold text-gray-900 mb-1">
+                      <%= course.title %>
+                    </h3>
+                    <div class="text-sm text-gray-500 mb-2">Admin / User</div>
+
+                    <div class="flex items-center mb-2">
+                      <span class="text-yellow-500">4.7</span>
+                      <svg
+                        class="w-4 h-4 text-yellow-500 ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                        ></path>
+                      </svg>
+                      <span class="text-gray-500 text-sm ml-1">(17,345)</span>
+                    </div>
+
+                    <div class="w-full mb-3">
+                      <div
+                        class="flex justify-between text-xs text-gray-500 mb-1"
+                      >
+                        <span>Progress</span>
+                        <span>35%</span>
+                      </div>
+                      <div class="progress-bar bg-gray-200 rounded h-2 w-full">
+                        <div
+                          class="progress-value bg-purple-600 h-2 rounded"
+                          style="width: 35%"
+                        ></div>
+                      </div>
+                    </div>
+
+                    <!-- ✅ Tombol CONTINUE mengarah ke video -->
+                    <a href="/materi/<%= course.id %>">
+                      <button
+                        class="w-full px-4 py-2 text-sm font-medium text-purple-600 border border-purple-600 rounded-md hover:bg-purple-50"
+                      >
+                        Continue
+                      </button>
+                    </a>
+                  </div>
+                </div>
+                <% }) %>
+
+                <!-- Course Card 2 -->
+                <div
+                  class="bg-white border border-gray-200 rounded-lg overflow-hidden course-card transition duration-300"
+                >
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0f63a199-6512-48f8-94a2-a5a639990e60.png"
+                    alt="Data science course cover with charts and graphs on dark background"
+                    class="w-full h-36 object-cover"
+                  />
+                  <div class="p-4">
+                    <h3 class="font-bold text-gray-900 mb-1">
+                      Data Science and Machine Learning Bootcamp
+                    </h3>
+                    <div class="text-sm text-gray-500 mb-2">Intellipaat</div>
+                    <div class="flex items-center mb-2">
+                      <span class="text-yellow-500">4.8</span>
+                      <svg
+                        class="w-4 h-4 text-yellow-500 ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                        ></path>
+                      </svg>
+                      <span class="text-gray-500 text-sm ml-1">(23,789)</span>
+                    </div>
+
+                    <div class="w-full mb-3">
+                      <div
+                        class="flex justify-between text-xs text-gray-500 mb-1"
+                      >
+                        <span>Progress</span>
+                        <span>82%</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div class="progress-value" style="width: 82%"></div>
+                      </div>
+                    </div>
+
+                    <button
+                      class="w-full px-4 py-2 text-sm font-medium text-purple-600 border border-purple-600 rounded-md hover:bg-purple-50"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div
+                  class="bg-white border border-gray-200 rounded-lg overflow-hidden course-card transition duration-300"
+                >
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/02a53da6-e58b-4c4f-b92e-0df4ab715829.png"
+                    alt="UI/UX design course cover with colorful shapes and mobile mockups"
+                    class="w-full h-36 object-cover"
+                  />
+                  <div class="p-4">
+                    <h3 class="font-bold text-gray-900 mb-1">
+                      UI/UX Design Fundamentals for Beginners 2023
+                    </h3>
+                    <div class="text-sm text-gray-500 mb-2">
+                      Daniel Walter Scott
+                    </div>
+                    <div class="flex items-center mb-2">
+                      <span class="text-yellow-500">4.6</span>
+                      <svg
+                        class="w-4 h-4 text-yellow-500 ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                        ></path>
+                      </svg>
+                      <span class="text-gray-500 text-sm ml-1">(8,456)</span>
+                    </div>
+
+                    <div class="w-full mb-3">
+                      <div
+                        class="flex justify-between text-xs text-gray-500 mb-1"
+                      >
+                        <span>Progress</span>
+                        <span>14%</span>
+                      </div>
+                      <div class="progress-bar">
+                        <div class="progress-value" style="width: 14%"></div>
+                      </div>
+                    </div>
+
+                    <button
+                      class="w-full px-4 py-2 text-sm font-medium text-purple-600 border border-purple-600 rounded-md hover:bg-purple-50"
+                    >
+                      Continue
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div
+                  class="bg-white border border-gray-200 rounded-lg overflow-hidden course-card transition duration-300"
+                >
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b8841de8-1459-40e2-954b-bd27568d9c33.png"
+                    alt="iOS development course cover with Xcode interface and iPhone mockup"
+                    class="w-full h-36 object-cover"
+                  />
+                  <div class="p-4">
+                    <h3 class="font-bold text-gray-900 mb-1">
+                      iOS 16 & Swift 5 - Complete Developer Course
+                    </h3>
+                    <div class="text-sm text-gray-500 mb-2">Dr. Angela Yu</div>
+                    <div class="flex items-center mb-2">
+                      <span class="text-yellow-500">4.8</span>
+                      <svg
+                        class="w-4 h-4 text-yellow-500 ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                        ></path>
+                      </svg>
+                      <span class="text-gray-500 text-sm ml-1">(12,908)</span>
+                    </div>
+
+                    <button
+                      class="w-full px-4 py-2 text-sm font-medium text-white bg-purple-600 border border-purple-600 rounded-md hover:bg-purple-700"
+                    >
+                      Start Course
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommended Courses Section -->
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-6">
+                <h1 class="text-xl font-bold text-gray-900">
+                  Recommended for you
+                </h1>
+                <a
+                  href="#"
+                  class="text-sm font-medium text-purple-600 hover:text-purple-700"
+                  >See all</a
+                >
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Recommended Course 1 -->
+                <div
+                  class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300"
+                >
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/620f666f-410b-43a1-ab3d-702e5890aa99.png"
+                    alt="React JS course cover with React logo and code snippets"
+                    class="w-full h-40 object-cover"
+                  />
+                  <div class="p-4">
+                    <h3 class="font-bold text-gray-900 mb-1">
+                      React - The Complete Guide (incl Hooks, React Router,
+                      Redux)
+                    </h3>
+                    <div class="text-sm text-gray-500 mb-1">
+                      Maximilian Schwarzmüller
+                    </div>
+                    <div class="flex items-center">
+                      <span class="text-yellow-500">4.6</span>
+                      <svg
+                        class="w-4 h-4 text-yellow-500 ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                        ></path>
+                      </svg>
+                      <span class="text-gray-500 text-xs ml-1">(43,567)</span>
+                    </div>
+                    <div class="mt-2 text-gray-900 font-bold">Rp899,000</div>
+                  </div>
+                </div>
+
+                <!-- Recommended Course 2 -->
+                <div
+                  class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300"
+                >
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bb1b7b28-2046-4948-8b10-7bab2e0cd226.png"
+                    alt="AWS cloud computing course cover with AWS logo and server infrastructure"
+                    class="w-full h-40 object-cover"
+                  />
+                  <div class="p-4">
+                    <h3 class="font-bold text-gray-900 mb-1">
+                      AWS Certified Solutions Architect - Associate 2023
+                    </h3>
+                    <div class="text-sm text-gray-500 mb-1">
+                      Stephane Maarek
+                    </div>
+                    <div class="flex items-center">
+                      <span class="text-yellow-500">4.7</span>
+                      <svg
+                        class="w-4 h-4 text-yellow-500 ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                        ></path>
+                      </svg>
+                      <span class="text-gray-500 text-xs ml-1">(15,342)</span>
+                    </div>
+                    <div class="mt-2 text-gray-900 font-bold">Rp799,000</div>
+                  </div>
+                </div>
+
+                <!-- Recommended Course 3 -->
+                <div
+                  class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300"
+                >
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2f0e6dad-527d-4ade-b2e0-1537ce9dd9a6.png"
+                    alt="Digital marketing course cover with graphs and social media icons"
+                    class="w-full h-40 object-cover"
+                  />
+                  <div class="p-4">
+                    <h3 class="font-bold text-gray-900 mb-1">
+                      The Complete Digital Marketing Course - 12 Courses in 1
+                    </h3>
+                    <div class="text-sm text-gray-500 mb-1">Rob Percival</div>
+                    <div class="flex items-center">
+                      <span class="text-yellow-500">4.4</span>
+                      <svg
+                        class="w-4 h-4 text-yellow-500 ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                        ></path>
+                      </svg>
+                      <span class="text-gray-500 text-xs ml-1">(9,876)</span>
+                    </div>
+                    <div class="mt-2 text-gray-900 font-bold">Rp699,000</div>
+                  </div>
+                </div>
+
+                <!-- Recommended Course 4 -->
+                <div
+                  class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition duration-300"
+                >
+                  <img
+                    src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a7952e92-e634-4a1c-a01b-24e4cafdf12c.png"
+                    alt="Figma UI design course cover with design interfaces and tools"
+                    class="w-full h-40 object-cover"
+                  />
+                  <div class="p-4">
+                    <h3 class="font-bold text-gray-900 mb-1">
+                      Figma UI UX Design Essentials
+                    </h3>
+                    <div class="text-sm text-gray-500 mb-1">
+                      Daniel Walter Scott
+                    </div>
+                    <div class="flex items-center">
+                      <span class="text-yellow-500">4.5</span>
+                      <svg
+                        class="w-4 h-4 text-yellow-500 ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                        ></path>
+                      </svg>
+                      <span class="text-gray-500 text-xs ml-1">(6,543)</span>
+                    </div>
+                    <div class="mt-2 text-gray-900 font-bold">Rp599,000</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Courses</title>
+  </head>
+  <body>
+    <h1>My Video Courses</h1>
+
+    <% if (materi.length > 0) { %> <% materi.forEach((item) => { %>
+    <div class="course-card">
+      <img
+        src="<%= item.thumbnail %>"
+        alt="<%= item.title %>"
+        style="width: 250px"
+      />
+      <h3><%= item.title %></h3>
+      <a href="/materi/<%= item.id %>">Lihat Materi</a>
+    </div>
+    <% }) %> <% } else { %>
+    <p>Kamu belum memiliki materi.</p>
+    <% } %>
+  </body>
+</html>

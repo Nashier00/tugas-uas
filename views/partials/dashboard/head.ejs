@@ -1,0 +1,47 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Udemy Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --udemy-purple: #5624d0;
+      --udemy-dark: #1c1d1f;
+      --udemy-gray: #6a6f73;
+      --udemy-light-gray: #f7f9fa;
+      --udemy-orange: #f69c08;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f7f9fa;
+      color: var(--udemy-dark);
+    }
+
+    .progress-bar {
+      background-color: #e0e0e0;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-value {
+      height: 100%;
+      background-color: var(--udemy-purple);
+      transition: width 0.3s ease;
+    }
+
+    .course-card:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .menu-item:hover {
+      background-color: rgba(98, 36, 208, 0.1);
+    }
+  </style>
+</head>

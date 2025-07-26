@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Approval Materi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="p-6 bg-white rounded shadow">
+      <h1 class="text-xl font-bold mb-4">Approval Materi</h1>
+
+      <% if (typeof materiList !== 'undefined' && materiList.length === 0) { %>
+      <p class="text-gray-600">Tidak ada materi yang menunggu persetujuan.</p>
+      <% } else { %>
+      <table class="min-w-full divide-y divide-gray-200 border">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Judul
+            </th>
+            <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Deskripsi
+            </th>
+            <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Link Video
+            </th>
+            <th class="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+              Aksi
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-100">
+          <% materiList.forEach(m => { %>
+          <tr>
+            <td class="px-4 py-2"><%= m.title %></td>
+            <td class="px-4 py-2"><%= m.description %></td>
+            <td class="px-4 py-2">
+              <a
+                href="<%= m.file_path %>"
+                target="_blank"
+                class="text-blue-600 hover:underline"
+                >Tonton</a
+              >
+            </td>
+            <td class="px-4 py-2 space-x-2">
+              <form
+                method="POST"
+                action="/admin/approve/<%= m.id %>"
+                class="inline"
+              >
+                <button
+                  type="submit"
+                  class="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700"
+                >
+                  Approve
+                </button>
+              </form>
+              <form
+                method="POST"
+                action="/admin/reject/<%= m.id %>"
+                class="inline"
+              >
+                <button
+                  type="submit"
+                  class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700"
+                >
+                  Reject
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </body>
+</html>

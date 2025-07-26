@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Materi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
+      <h2 class="text-2xl font-semibold mb-6 text-center">Upload Materi</h2>
+      <form action="/upload-materi" method="POST" class="space-y-4">
+        <!-- Judul -->
+        <div>
+          <label for="title" class="block text-sm font-medium text-gray-700"
+            >Judul</label
+          >
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Judul materi"
+            required
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"
+          />
+        </div>
+
+        <!-- Deskripsi -->
+        <div>
+          <label
+            for="description"
+            class="block text-sm font-medium text-gray-700"
+            >Deskripsi</label
+          >
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Deskripsi singkat"
+            required
+            rows="4"
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"
+          ></textarea>
+        </div>
+
+        <!-- Link YouTube Embed -->
+        <div>
+          <label for="file_path" class="block text-sm font-medium text-gray-700"
+            >Link YouTube (embed)</label
+          >
+          <input
+            type="text"
+            id="file_path"
+            name="file_path"
+            placeholder="https://www.youtube.com/embed/..."
+            required
+            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500"
+          />
+        </div>
+
+        <!-- Tombol Submit -->
+        <div class="text-center">
+          <button
+            type="submit"
+            class="px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition"
+          >
+            Upload
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
