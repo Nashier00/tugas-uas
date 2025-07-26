@@ -1,0 +1,40 @@
+<h2><%= materi.title %></h2>
+<p><%= materi.description %></p>
+
+<iframe
+  width="100%"
+  height="400"
+  src="<%= materi.file_path %>"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
+<h3>Diskusi</h3>
+<form action="/komentar/<%= materi.id %>" method="POST">
+  <textarea name="content" placeholder="Tulis komentar..." required></textarea>
+  <button type="submit">Kirim</button>
+</form>
+
+<ul>
+  <% function renderKomentar(list, parentId = null) { list.filter(k =>
+  k.parent_id === parentId).forEach(k => { %>
+  <li style="margin-left: <%= parentId ? '20px' : '0' %>">
+    <strong>Pengguna</strong>: <%= k.content %>
+
+    <!-- Form balas komentar -->
+    <form
+  action="/komentar/<%= materi.id %>"
+  method="POST"
+  style="margin-top: 5px"
+>
+  <input type="hidden" name="materi_id" value="<%= materi.id %>" />
+  <input type="hidden" name="parent_id" value="<%= k.id %>" />
+  <input type="text" name="content" placeholder="Balas..." required />
+  <button type="submit">Balas</button>
+</form>
+
+
+    <% renderKomentar(list, k.id); %>
+  </li>
+  <% }) } renderKomentar(komentar); %>
+</ul>
